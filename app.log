@@ -1,0 +1,54 @@
+2024-02-04 18:50:14,041 - INFO - check_question_exist - [L37]- Checking question exist in DB
+2024-02-04 18:50:14,041 - ERROR - view_survey - [L94]- No survey exist, please create a new one.
+Traceback (most recent call last):
+  File "c:\__MY_WORK\YesOrNoSurvey\main.py", line 90, in view_survey
+    check_question_exist()
+  File "c:\__MY_WORK\YesOrNoSurvey\main.py", line 39, in check_question_exist
+    raise Exception("No survey exist, please create a new one.")
+Exception: No survey exist, please create a new one.
+2024-02-04 18:50:35,369 - INFO - <module> - [L115]- Application starts
+2024-02-04 19:01:32,459 - INFO - submit_response - [L69]- Entering submit response
+2024-02-04 19:01:32,459 - INFO - check_question_exist - [L37]- Checking question exist in DB
+2024-02-04 19:01:32,459 - ERROR - submit_response - [L82]- No survey exist, please create a new one.
+Traceback (most recent call last):
+  File "c:\__MY_WORK\YesOrNoSurvey\main.py", line 70, in submit_response
+    check_question_exist()
+  File "c:\__MY_WORK\YesOrNoSurvey\main.py", line 39, in check_question_exist
+    raise Exception("No survey exist, please create a new one.")
+Exception: No survey exist, please create a new one.
+2024-02-04 19:01:33,108 - INFO - submit_response - [L69]- Entering submit response
+2024-02-04 19:01:33,108 - INFO - check_question_exist - [L37]- Checking question exist in DB
+2024-02-04 19:01:33,108 - ERROR - submit_response - [L82]- No survey exist, please create a new one.
+Traceback (most recent call last):
+  File "c:\__MY_WORK\YesOrNoSurvey\main.py", line 70, in submit_response
+    check_question_exist()
+  File "c:\__MY_WORK\YesOrNoSurvey\main.py", line 39, in check_question_exist
+    raise Exception("No survey exist, please create a new one.")
+Exception: No survey exist, please create a new one.
+2024-02-04 19:01:33,843 - INFO - submit_response - [L69]- Entering submit response
+2024-02-04 19:01:33,843 - INFO - check_question_exist - [L37]- Checking question exist in DB
+2024-02-04 19:01:33,843 - ERROR - submit_response - [L82]- No survey exist, please create a new one.
+Traceback (most recent call last):
+  File "c:\__MY_WORK\YesOrNoSurvey\main.py", line 70, in submit_response
+    check_question_exist()
+  File "c:\__MY_WORK\YesOrNoSurvey\main.py", line 39, in check_question_exist
+    raise Exception("No survey exist, please create a new one.")
+Exception: No survey exist, please create a new one.
+2024-02-04 19:01:34,442 - INFO - submit_response - [L69]- Entering submit response
+2024-02-04 19:01:34,442 - INFO - check_question_exist - [L37]- Checking question exist in DB
+2024-02-04 19:01:34,442 - ERROR - submit_response - [L82]- No survey exist, please create a new one.
+Traceback (most recent call last):
+  File "c:\__MY_WORK\YesOrNoSurvey\main.py", line 70, in submit_response
+    check_question_exist()
+  File "c:\__MY_WORK\YesOrNoSurvey\main.py", line 39, in check_question_exist
+    raise Exception("No survey exist, please create a new one.")
+Exception: No survey exist, please create a new one.
+2024-02-04 19:01:52,925 - INFO - reset_survey - [L101]- Entering reset survey
+2024-02-04 19:01:52,925 - INFO - check_question_exist - [L37]- Checking question exist in DB
+2024-02-04 19:01:52,925 - ERROR - reset_survey - [L110]- No survey exist, please create a new one.
+Traceback (most recent call last):
+  File "c:\__MY_WORK\YesOrNoSurvey\main.py", line 102, in reset_survey
+    check_question_exist()
+  File "c:\__MY_WORK\YesOrNoSurvey\main.py", line 39, in check_question_exist
+    raise Exception("No survey exist, please create a new one.")
+Exception: No survey exist, please create a new one.

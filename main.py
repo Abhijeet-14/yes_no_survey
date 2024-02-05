@@ -1,10 +1,12 @@
 from flask import Flask, request, redirect, url_for, jsonify
-import logging
+from logger import setup_logger, check_time_now_to_reset_log_file
 
-logger = logging.getLogger(__name__)
 # import sqlite3
-
 app = Flask(__name__)
+
+
+logger = setup_logger(app)
+
 
 # Database setup
 # DATABASE = "example.db"
@@ -26,11 +28,13 @@ DB = {}
 
 
 def create_db():
-    print("creating db")
+    logger.info("creating db")
     return {"question": "", "answer": {"yes": 0, "no": 0}}
 
 
 def check_question_exist():
+    check_time_now_to_reset_log_file()
+    logger.info("Checking question exist in DB")
     if not DB.get("question"):
         raise Exception("No survey exist, please create a new one.")
 
@@ -39,17 +43,22 @@ def check_question_exist():
 def create_question():
     if request.method == "POST":
         try:
+            logger.info("Entering generate question")
             question = request.form["question"]
             if DB.get("question"):
-                return jsonify({"message": "Question Already exist, please reset."})
+                return jsonify({"message": "Survey already exist, please reset."})
+
             DB["question"] = question
+            DB["answer"] = {"yes": 0, "no": 0}
+            logger.info(DB["question"])
+            logger.info("Exiting generate question")
             return jsonify(
                 {
                     "message": "Successfully created your question, start sharing the survey."
                 }
             )
         except Exception as exc:
-            print(str(exc))
+            logger.exception(exc)
             return jsonify({"message": str(exc)})
 
 
@@ -57,46 +66,52 @@ def create_question():
 def submit_response():
     if request.method == "POST":
         try:
+            logger.info("Entering submit response")
             check_question_exist()
             yes = request.json["yes"]
             no = request.json["no"]
             DB["answer"]["yes"] += yes
             DB["answer"]["no"] += no
+            logger.info("Exiting generate question")
             return jsonify(
                 {
                     "message": f"Successfully saved your response for {DB.get('question')}"
                 }
             )
         except Exception as exc:
-            print(str(exc))
+            logger.exception(exc)
             return jsonify({"message": str(exc)})
 
 
 @app.route("/survey", methods=["GET"])
 def view_survey():
     try:
+        logger.info("Entering view_survey")
         check_question_exist()
+        logger.info("Exiting generate question")
         return jsonify(DB)
     except Exception as exc:
-        print(str(exc))
+        logger.exception(exc)
         return jsonify({"message": str(exc)})
 
 
 @app.route("/reset", methods=["POST"])
 def reset_survey():
     try:
+        logger.info("Entering reset survey")
         check_question_exist()
         DB["question"] = ""
         DB["answer"] = {"yes": 0, "no": 0}
+        logger.info("Exiting reset survey")
         return jsonify(
             {"message": "Your survey has been closed. Please create new one."}
         )
     except Exception as exc:
-        print(str(exc))
+        logger.exception(exc)
         return jsonify({"message": str(exc)})
 
 
 if __name__ == "__main__":
-    print("Application starts")
-    DB = create_db()
+    logger.info("Application starts")
+    # DB = create_db()
     app.run(debug=True)
